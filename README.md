@@ -128,4 +128,5 @@ idpay.callback(int(status_code_khod), order_id_dakhele_database, trans_action_da
 ```
 
 
-[link text itself]: https://idpay.ir/web-service/v1.1/
+
+[Help IDPay API](https://idpay.ir/web-service/v1.1/)
