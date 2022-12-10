@@ -76,4 +76,4 @@ link : لینک هم به صورت کاملا یکتا می باشد که نشا
 نکته مهم :
 
 بعد از اینکه تراکنش شما ساخته شد شما حتما باید وارد لینک که از طرف سرور برای شما ارسال می شود شوید و سپس اگر در حالت آزمایشی قراردارید بر روی در انتظار تایید پرداخت کلیک کنید. 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://raw.githubusercontent.com/Pythoniha/IDPay-Basic/main/screen/idpay.jpg "Logo Title Text 1")
