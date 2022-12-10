@@ -1,3 +1,8 @@
 # IDPay Basic Modules
-Alt-H1
-======
+
+
+
+```python
+s = "Python syntax highlighting"
+print s
+```
