@@ -9,13 +9,13 @@
 3. حالت سوم به صورت کاملا ثابت می باشد که مقدار application/json را دارد که بیان گر حالت دریافت/ارسال اطلاعات و پارامتر ها به صورت رشته Json است. 
 برای نمونه مثال های بالا کد زیر را در نظر بگیرید:
 ```python
-id = idpay("19cc697a-747a-4166-a76e-103240874dda", "http://localhost:8000/")
+id = idpay("6a7f99eb-7c20-4412-a972-6dfb7cd253a4", "http://localhost:8000/")
 ```
 توضیح کد بالا :
 کد بالا یک تابع __init__ را از کلاس اصلی idpay فراخانی می کند و در قسمت اول ورودی X-API-KEY و در قسمت دوم آدرس Callback که هم در درگاه پرداخت خود در پنل مدیریت پروفایل idpay را ثبت کرده اید پاس می دهد.
 در این کتابخانه حالت آزمایشی به صورت دیفالت بر روی کتابخانه True قراردارد و اگر می خواهید حالت آن را به False تغییر دهید می توانید از قطعه کد زیر استفاده کنید :
 ```python
-id = idpay("19cc697a-747a-4166-a76e-103240874dda", "http://localhost:8000/", sandbox = False)
+id = idpay("6a7f99eb-7c20-4412-a972-6dfb7cd253a4", "http://localhost:8000/", sandbox = False)
 ```
 ======
 ## تابع پرداخت
@@ -104,3 +104,25 @@ idpay.callback(10, 1200, b5bbc2808e30e1169b3661a30cf9d41b, 12, b5bbc2808e30e1169
 نکته اول : اگر شما در حالت واقعی و یا مشتریان شما در حال واقعی یک تراکنش را انجام دهند و تابع Verify فعال نشود و پول از حساب مشتریان کسر شود تا 72 ساعت آینده به حساب این مشتریان واریز می شود.
 
 نکته 2 : اگر تمامی مراحل به صورت درست اعمال شود و اطلاعات به سمت سرور ارسال شود و تابع Callback صحت سنجی این اطلاعات را راستی آزمایی کند و سپس تابع Verify بدون ارور اجرا شود پول به حساب درگاه بانکی شما واریز شده و دیگر هیچ اروری دریافت نخواهیدکرد اما شما تا قبل از حداقل 10 دقیقه پس از انجام تراکنش می توانید عمل Verify کردن حساب را انجام دهید و اگر این مدت زمان بگذرد پول دوباره به حساب مشتری برگشت خواهد خورد.
+
+
+نمونه کد های کامل برای استفاده صحیح از کتابخانه
+
+```python
+id = idpay("6a7f99eb-7c20-4412-a972-6dfb7cd253a4", "http://localhost:8000/")
+id.payment(1200 ,1000, 'dashboard')
+questions = input('Aya Link Ra Moshahede Kardid ?[Yes | No ]').lower()
+if questions == 'no':
+    print('Pass Dobare Link Morede Nazar Ra baraye Shoma Ersam mikonam Ta Pardakht Ra anjam dahid !')
+elif questions == 'yes':
+    print('Montazere Tayid Pardakht Bashid !')
+
+status_code_khod = input('Status Code : ')
+order_id_dakhele_database = input('Order ID Dakhele Data Base Ra vared konid : ')
+trans_action_dakhele_db = input('Transaction Dakhele Data Base Ra vared konid : ')
+order_id_server_online = input('order id server Ra vared konid : ')
+trans_action_server = input('Trasnaction server Ra vared konid : ')
+
+
+idpay.callback(int(status_code_khod), order_id_dakhele_database, trans_action_dakhele_db, order_id_server_online, trans_action_server)
+```
